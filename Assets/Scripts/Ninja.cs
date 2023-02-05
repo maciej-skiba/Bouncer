@@ -43,7 +43,7 @@ public class Ninja : MonoBehaviour
         _animator.SetFloat("Y_speed", _yAxisInput);
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && CheckIfGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && GroundCheck.isPlayerGrounded)
         {
             Jump();
         }
@@ -66,31 +66,6 @@ public class Ninja : MonoBehaviour
         isGrounded = false;
         _animator.SetTrigger("Jump");
         _rigidbody.AddForce(Vector3.up * _jumpSpeed, ForceMode.Impulse);
-    }
-
-    private bool CheckIfGrounded()
-    {
-        Debug.Log(_groundCheckTransform.localScale);
-        if (Physics.CheckBox(
-            _groundCheckCollider.transform.position,
-            _groundCheckCollider.bounds.size * 0.5f,
-            Quaternion.identity, _groundLayerMask.value))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-        //Vector3 down = transform.TransformDirection(Vector3.down);
-        //if (Physics.Raycast(_groundCheckTransform.position, down, _groundCheckDistance, _groundLayerMask))
-        //{
-        //    isGrounded = true;
-        //}
-        //else
-        //{
-        //    isGrounded = false;
-        //}
     }
 
     private void OnApplicationFocus(bool focus)
