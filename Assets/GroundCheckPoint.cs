@@ -15,8 +15,6 @@ public class GroundCheckPoint : MonoBehaviour
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.2f, _groundLayerMask);
 
-        DebugText.Instance.debugText.text += " " + hitColliders.Length.ToString();
-
         if (hitColliders.Length > 0)
         {
             isPointGrounded = true;

@@ -43,9 +43,13 @@ public class Ninja : MonoBehaviour
         _animator.SetFloat("Y_speed", _yAxisInput);
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && GroundCheck.isPlayerGrounded)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Jump();
+            if (GroundCheck.isPlayerGrounded
+                || !GroundCheck.isPlayerGrounded && WallrunCheck.s_wallrunning)
+            {
+                Jump();
+            }
         }
 
         var y_Rotation = _xAxisMouseInput * _cameraRotationSpeed;

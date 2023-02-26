@@ -20,6 +20,6 @@ public class GroundCheck : MonoBehaviour
             isPlayerGrounded = false;
         }
 
-        DebugText.Instance.debugText.text = isPlayerGrounded.ToString();
+        //DebugText.Instance.debugText.text += "isPlayerGrounded: " + isPlayerGrounded.ToString();
     }
 }
